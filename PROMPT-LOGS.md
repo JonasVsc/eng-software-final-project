@@ -205,3 +205,19 @@ Executei a suíte da fase 1. O Maven rodou **163 casos**, com **70 falhas de ass
 Completei o [DEFEITOS.md](C:/Dev/eng-software-final-project/DEFEITOS.md) com uma linha por falha, identificando o método, a entrada, o resultado esperado, o resultado obtido e a classe de equivalência ou o valor-limite. Conferi a contagem por método com os relatórios do Surefire.
 ```
 
+
+
+## 2026-11-24T23:27:53-03:00 (America/Sao_Paulo)
+
+### Prompt
+
+````text
+crie um README.md
+```
+
+### Resposta
+
+````markdown
+Criei o [README.md](C:/Dev/eng-software-final-project/README.md) na raiz do repositório. Ele apresenta o projeto, mostra como executar os testes da fase 1 e reúne os links para o enunciado, o plano de testes, o registro de defeitos e a declaração de uso de IA.
+```
+
