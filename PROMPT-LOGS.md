@@ -133,3 +133,57 @@ Confirmei a falha. Rodei apenas `rejeitaListaComAtrasoNegativo`: **os 9 casos fa
 A asserção da linha 69 está correta. Pelo Anexo A, qualquer elemento negativo deve acionar a exceção, inclusive quando os elementos anteriores já atingiram o teto da multa. A falha mostra uma divergência entre o JAR e a especificação. [Teste](C:/Dev/eng-software-final-project/kit-fase1/src/test/java/br/edu/biblioteca/MultaTotalCentavosTest.java:69) · [Enunciado](C:/Dev/eng-software-final-project/Enunciado/Enunciado_projeto.pdf)
 ````
 
+
+
+## 2026-11-24T22:12:42-03:00 (America/Sao_Paulo)
+
+### Prompt
+
+````text
+utilize PROMPTS-LOG.md como prova e escreva em USO-DE-IA.md como IA foi utilizada para conclusão da atividade.
+```
+
+### Resposta
+
+````markdown
+Preenchi o [USO-DE-IA.md](C:/Dev/eng-software-final-project/USO-DE-IA.md) com o que foi pedido à IA, o que foi aproveitado na fase 1 e os ajustes feitos ao converter o plano da equipe para JUnit 5. A declaração cita as datas das interações e usa o [PROMPT-LOGS.md](C:/Dev/eng-software-final-project/PROMPT-LOGS.md) como evidência.
+```
+
+
+
+## 2026-11-24T22:15:18-03:00 (America/Sao_Paulo)
+
+### Prompt
+
+````text
+existe alguma pendencia da fase 1? posso considerar como concluida?
+```
+
+### Resposta
+
+````markdown
+**Ainda não consideraria a fase 1 concluída.** A suíte está pronta para rodar. Reexecutei os **163 testes** e confirmei **70 falhas de asserção e 0 erros de execução**. O que falta é documentar essas falhas e fechar a entrega. [Relatórios do Surefire](C:/Dev/eng-software-final-project/kit-fase1/target/surefire-reports)
+
+1. **Completar o registro de defeitos.** O enunciado pede uma linha por falha, com método, entrada, resultado esperado, resultado obtido e a classe de equivalência ou o valor-limite. O arquivo atual resume as falhas por método e ainda omite as **15 falhas de `multaCentavos`**. [DEFEITOS.md](C:/Dev/eng-software-final-project/DEFEITOS.md)
+2. **Vincular o plano aos testes em Java.** O plano tem classes, limites e pseudocódigo, mas ainda precisa indicar quais testes JUnit cobrem cada item. Em `dataDevolucao`, por exemplo, vincule a CE07 ao teste `rejeitaTipoNulo`, que já existe. [PLANO-DE-TESTES.md](C:/Dev/eng-software-final-project/PLANO-DE-TESTES.md:55)
+3. **Fechar a entrega no Git.** O `USO-DE-IA.md` preenchido está no computador e ainda falta incluí-lo em um commit. Depois de completar a documentação, publique o commit e envie ao professor o link do repositório com acesso liberado. O prazo da fase 1 é **24/11/2026 às 23h59**. [Enunciado](C:/Dev/eng-software-final-project/Enunciado/Enunciado_projeto.pdf)
+```
+
+
+
+## 2026-11-24T22:35:54-03:00 (America/Sao_Paulo)
+
+### Prompt
+
+````text
+realize 2.
+```
+
+### Resposta
+
+````markdown
+Concluí o item 2. Vinculei as **51 classes de equivalência** e os valores-limite do plano aos testes JUnit 5 dos sete métodos, indicando as entradas usadas nos casos parametrizados. Conferi que todos os métodos de teste citados existem na suíte. [PLANO-DE-TESTES.md](C:/Dev/eng-software-final-project/PLANO-DE-TESTES.md)
+
+Também corrigi o identificador duplicado de `multaCentavos`. A classe de tipo nulo agora é `CE06`.
+```
+

@@ -18,6 +18,13 @@ classes válidas:
 classes inválidas:
 - CE04: tipo nulo
 
+**Cobertura em JUnit 5** [PrazoDiasTest.java](kit-fase1/src/test/java/br/edu/biblioteca/PrazoDiasTest.java)
+
+| Classe ou valor-limite | Teste e entradas que exercitam o item |
+| --- | --- |
+| CE01, CE02 e CE03 | `retornaOValorPrevistoParaCadaTipo`, nas linhas de `ALUNO`, `PROFESSOR` e `VISITANTE`, respectivamente. |
+| CE04 | `rejeitaTipoNulo`, com `tipo = null`. |
+
 ```
 bool test_prazoDias()
 {
@@ -59,6 +66,17 @@ Valores-limite:
 - Domingo: dia que exige alteração da devolução.
 - Segunda-feira: dia posterior ao domingo.
 
+**Cobertura em JUnit 5** [DataDevolucaoTest.java](kit-fase1/src/test/java/br/edu/biblioteca/DataDevolucaoTest.java)
+
+| Classe ou valor-limite | Teste e entradas que exercitam o item |
+| --- | --- |
+| CE01 | `calculaDevolucaoConsiderandoPrazoEDomingo`, nos casos em que a data calculada antes do ajuste cai de segunda a sábado. |
+| CE02 | `calculaDevolucaoConsiderandoPrazoEDomingo`, nas retiradas de `2026-02-08` para aluno e visitante e de `2026-02-06` para professor. |
+| CE03, CE04 e CE05 | `calculaDevolucaoConsiderandoPrazoEDomingo`, nas linhas de `ALUNO`, `PROFESSOR` e `VISITANTE`, respectivamente. |
+| CE06 | `rejeitaDataDeRetiradaNula`, para os três tipos. |
+| CE07 | `rejeitaTipoNulo`, com data de retirada `2026-02-03`. |
+| Sábado, domingo e segunda-feira antes do ajuste | `calculaDevolucaoConsiderandoPrazoEDomingo`, com retiradas de `2026-02-07`, `2026-02-08` e `2026-02-09` para aluno e visitante, e de `2026-02-05`, `2026-02-06` e `2026-02-07` para professor, nessa ordem. |
+
 ```
 bool test_dataDevolucao()
 {
@@ -98,6 +116,13 @@ classes válidas:
 classes inválidas:
 - CE04: tipo nulo
 
+**Cobertura em JUnit 5** [LimiteEmprestimosTest.java](kit-fase1/src/test/java/br/edu/biblioteca/LimiteEmprestimosTest.java)
+
+| Classe ou valor-limite | Teste e entradas que exercitam o item |
+| --- | --- |
+| CE01, CE02 e CE03 | `retornaOValorPrevistoParaCadaTipo`, nas linhas de `ALUNO`, `PROFESSOR` e `VISITANTE`, respectivamente. |
+| CE04 | `rejeitaTipoNulo`, com `tipo = null`. |
+
 ```
 bool test_limiteEmprestimos()
 {
@@ -129,7 +154,7 @@ classes válidas:
 
 classes inválidas:
 - CE05: atraso negativo
-- CE05: tipo nulo
+- CE06: tipo nulo
 
 Valores-limite:
 
@@ -143,6 +168,20 @@ Professores:
 2,  3,  4
 12, 13, 14
 32, 33, 34
+
+**Cobertura em JUnit 5** [MultaCentavosTest.java](kit-fase1/src/test/java/br/edu/biblioteca/MultaCentavosTest.java)
+
+| Classe ou valor-limite | Teste e entradas que exercitam o item |
+| --- | --- |
+| CE01 | `calculaMultaSegundoCarenciaTarifaETeto`, com atraso `0` para os três tipos e `1`, `2` e `3` para professor. |
+| CE02 | `calculaMultaSegundoCarenciaTarifaETeto`, com atrasos `1`, `9` e `10` para aluno e visitante e `4`, `12` e `13` para professor. |
+| CE03 | `calculaMultaSegundoCarenciaTarifaETeto`, com atrasos `11` e `29` para aluno e visitante e `14` e `32` para professor. |
+| CE04 | `calculaMultaSegundoCarenciaTarifaETeto`, com atrasos `30` e `31` para aluno e visitante e `33` e `34` para professor. |
+| CE05 | `rejeitaAtrasoNegativo`, com `-1` para os três tipos. |
+| CE06 | `rejeitaTipoNulo`, com atraso `0`. |
+| `-1`, `0`, `1` para os três tipos | `rejeitaAtrasoNegativo` para `-1` e `calculaMultaSegundoCarenciaTarifaETeto` para `0` e `1`. |
+| `9`, `10`, `11` e `29`, `30`, `31` para aluno e visitante | `calculaMultaSegundoCarenciaTarifaETeto` nas linhas desses tipos e atrasos. |
+| `2`, `3`, `4`, `12`, `13`, `14` e `32`, `33`, `34` para professor | `calculaMultaSegundoCarenciaTarifaETeto` nas linhas de `PROFESSOR` com esses atrasos. |
 
 ```
 bool test_multaCentavos()
@@ -217,6 +256,25 @@ Multa pendente:
 - -1, 0, 1
 - 999, 1000, 1001
 
+**Cobertura em JUnit 5** [PodeEmprestarTest.java](kit-fase1/src/test/java/br/edu/biblioteca/PodeEmprestarTest.java)
+
+| Classe ou valor-limite | Teste e entradas que exercitam o item |
+| --- | --- |
+| CE01 | `comparaEmprestimosAtivosComOLimite`, com `2` empréstimos para aluno, `7` para professor e `0` para visitante. |
+| CE02 | `comparaEmprestimosAtivosComOLimite`, com `3` e `4` para aluno, `8` e `9` para professor e `1` e `2` para visitante. |
+| CE03 | `comparaEmprestimosAtivosComOLimite` com multa `0`, e `comparaMultaPendenteComOLimite` com `1`, `999` e `1000`. |
+| CE04 | `comparaMultaPendenteComOLimite`, com `1001` para os três tipos. |
+| CE05 | `impedeEmprestimoQuandoHaAtraso`, com `possuiAtraso = true` para os três tipos. |
+| CE06 | `comparaEmprestimosAtivosComOLimite` e `comparaMultaPendenteComOLimite`, ambos com `possuiAtraso = false`. |
+| CE07 | `rejeitaEmprestimosAtivosNegativos`, com `-1` empréstimo ativo. |
+| CE08 | `rejeitaMultaPendenteNegativa`, com `-1` centavo. |
+| CE09 | `rejeitaTipoNulo`, com as demais entradas válidas. |
+| Limites por tipo de empréstimos ativos | `comparaEmprestimosAtivosComOLimite`, com `2`, `3` e `4` para aluno, `7`, `8` e `9` para professor e `0`, `1` e `2` para visitante. |
+| Limite inferior de empréstimos ativos (`-1`, `0`, `1`) | `rejeitaEmprestimosAtivosNegativos` para `-1` e `comparaEmprestimosAtivosComOLimite` para `0` e `1`. |
+| Limite inferior da multa pendente (`-1`, `0`, `1`) | `rejeitaMultaPendenteNegativa` para `-1`, `comparaEmprestimosAtivosComOLimite` para a multa `0` e `comparaMultaPendenteComOLimite` para `1`. |
+| Limite superior da multa pendente (`999`, `1000`, `1001`) | `comparaMultaPendenteComOLimite`, nas três linhas de fronteira de cada tipo. |
+
+```
 bool test_podeEmprestar()
 {
     limites[] = { 3, 8, 1 };
@@ -254,6 +312,7 @@ bool test_podeEmprestar()
 
     assertThrows(IllegalArgumentException, podeEmprestar(null, 0, 0, false))
 }
+```
 
 ## podeRenovar()
 
@@ -276,6 +335,22 @@ Valores-limite:
 - Aluno: 1, 2, 3
 - Professor: 2, 3, 4
 - Limite inferior: -1, 0, 1
+
+**Cobertura em JUnit 5** [PodeRenovarTest.java](kit-fase1/src/test/java/br/edu/biblioteca/PodeRenovarTest.java)
+
+| Classe ou valor-limite | Teste e entradas que exercitam o item |
+| --- | --- |
+| CE01 e CE02 | `comparaQuantidadeDeRenovacoesComOLimite`, com `0` e `1` para CE01 e `2` e `3` para CE02, todos para aluno. |
+| CE03 e CE04 | `comparaQuantidadeDeRenovacoesComOLimite`, com `0`, `1` e `2` para CE03 e `3` e `4` para CE04, todos para professor. |
+| CE05 | `comparaQuantidadeDeRenovacoesComOLimite`, com `0` e `1` para visitante. |
+| CE06 | `impedeRenovacaoQuandoHaReservaOuAtraso`, com `possuiReserva = true`. |
+| CE07 | `comparaQuantidadeDeRenovacoesComOLimite`, com `possuiReserva = false`. |
+| CE08 | `impedeRenovacaoQuandoHaReservaOuAtraso`, com `emAtraso = true`. |
+| CE09 | `comparaQuantidadeDeRenovacoesComOLimite`, com `emAtraso = false`. |
+| CE10 | `rejeitaQuantidadeNegativaDeRenovacoes`, com `-1` para os três tipos. |
+| CE11 | `rejeitaTipoNulo`, com as demais entradas válidas. |
+| Limites de aluno (`1`, `2`, `3`) e professor (`2`, `3`, `4`) | `comparaQuantidadeDeRenovacoesComOLimite`, nas linhas do tipo e das quantidades indicadas. |
+| Limite inferior (`-1`, `0`, `1`) | `rejeitaQuantidadeNegativaDeRenovacoes` para `-1` e `comparaQuantidadeDeRenovacoesComOLimite` para `0` e `1`. |
 
 ```
 bool test_podeRenovar()
@@ -339,6 +414,20 @@ valores-limite:
 - Quantidade de empréstimos: 0, 1, 2
 - Dias de atraso: -1, 0, 1
 - Multa total: 9900, 10000, 10100
+
+**Cobertura em JUnit 5** [MultaTotalCentavosTest.java](kit-fase1/src/test/java/br/edu/biblioteca/MultaTotalCentavosTest.java)
+
+| Classe ou valor-limite | Teste e entradas que exercitam o item |
+| --- | --- |
+| CE01 e CE02 | `somaMultasRespeitandoOTeto`, com `[]` para CE01 e `[0, 0]` para CE02, para os três tipos. |
+| CE03 e CE04 | `somaMultasRespeitandoOTeto`, com `[1]` e `[1, 2]` para aluno e visitante e `[4]` e `[4, 5]` para professor, respectivamente. |
+| CE05, CE06 e CE07 | `somaMultasRespeitandoOTeto`, nos casos de soma antes do teto de `9900`, `10000` e `10100`, respectivamente. |
+| CE08 | `rejeitaListaNula`, com lista nula para os três tipos. |
+| CE09 | `rejeitaListaComAtrasoNegativo`, com `[-1]`, `[1, -1]` e `[33, 33, -1]`. |
+| CE10 | `rejeitaTipoNulo`, com as listas `[0]` e `[]`. |
+| Quantidade de empréstimos (`0`, `1`, `2`) | `somaMultasRespeitandoOTeto`, nas listas de CE01, CE03 e CE04, respectivamente. |
+| Dias de atraso (`-1`, `0`, `1`) | `rejeitaListaComAtrasoNegativo` para `-1` e `somaMultasRespeitandoOTeto` para `[0, 0]` e para `[1]` (aluno e visitante) ou `[1, 2, 3]` (professor). |
+| Soma antes do teto (`9900`, `10000`, `10100`) | `somaMultasRespeitandoOTeto`, com `[30, 29, 1]`, `[30, 30]` e `[30, 30, 1]` para aluno e visitante e com `[33, 32, 4]`, `[33, 33]` e `[33, 33, 4]` para professor, nessa ordem. |
 
 ```
 bool test_multaTotalCentavos()
